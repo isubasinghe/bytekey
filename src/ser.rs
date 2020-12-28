@@ -237,7 +237,8 @@ where
         } else {
             try!(self.writer.write_u8(8 << 4));
             self.writer.write_u64::<BE>(val)
-        }.map_err(From::from)
+        }
+        .map_err(From::from)
     }
 
     /// Encode an `i64` into a variable number of bytes.
@@ -344,7 +345,8 @@ where
         } else {
             try!(self.writer.write_u8((0x18 << 3) ^ mask as u8));
             self.writer.write_u64::<BE>(val ^ mask)
-        }.map_err(From::from)
+        }
+        .map_err(From::from)
     }
 }
 
